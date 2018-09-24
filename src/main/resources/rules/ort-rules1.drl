@@ -1,0 +1,26 @@
+package ort.rules
+import com.luukas.rules.entity.Input;
+import com.luukas.rules.entity.Output;
+
+//dialect "mvel"
+
+rule "generate response1"
+	salience -1
+	when 
+		$input:Input(strInput1 == "N");
+		$output:OutputJunk();
+	then
+		System.out.println("rule 1 is triggered");
+		$output.setTarget("ThankYou");
+		$output.setComment("answer1 - no");
+end
+
+rule "generate response2"
+	salience 5
+	when 
+		$input:Input(strInput1 == "Y");
+		$output:OutputJunk();
+	then
+		System.out.println("rule 2 is triggered");
+		$output.setTarget("IdTheft");
+end
